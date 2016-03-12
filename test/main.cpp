@@ -35,7 +35,6 @@ int main() {
   }
   for (int i = 0; i <= (size-1); i++) {
     uint32_t val = number_gen.get_new_val();
-    std::cout << "New value " << i << " is: " << val << std::endl;
     sort_me[i] = val;
   }
   merge_sort(sort_me, working_space, size);

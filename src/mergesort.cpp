@@ -1,5 +1,6 @@
 #include <cstdint>
 #include <stdexcept>
+#include <iostream>
 
 /*
     Example input array:
@@ -18,10 +19,11 @@
 
 */
 void merge_sort(uint32_t *data_array, uint32_t *working_array, uint32_t size) {
+    //std::cout << "Merge sort called with size of: " << size << std::endl;
     // Throw exception if size has an invalid value
     if (size <= 0) { throw std::invalid_argument("merge_sort called with size of 0"); }
     // Only need to do sorting if size is greater than 1
-    else if (size > 1) {
+    if (size > 1) {
         // Size of sub arrays
         uint32_t size_a, size_b = 0;
         // Counters used when recombining the sub arrays
@@ -30,7 +32,7 @@ void merge_sort(uint32_t *data_array, uint32_t *working_array, uint32_t size) {
         if (size % 2 == 0) {
             // Since size is even, both sub array sizes will be size/2;
             size_a = size/2;
-            size_a = size/2;
+            size_b = size/2;
         }
         else {
             // If odd, one will have (size-1)/2, and the other will have (size+1)/2
