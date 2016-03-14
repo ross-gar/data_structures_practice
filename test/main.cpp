@@ -15,18 +15,12 @@ int main() {
     0xeef45678, 0xafff345d, 0x12ff7532, 0x12feed64, 0x123456fe, 0x5fefdd2c, 0x02d07ffe, 0x2345ef12,
     0x12fca678, 0xa123345d, 0x12aaa372, 0x9383dc64, 0xdc284abc, 0x5f4a9368, 0x021238ef, 0x2da67812
   };
-  uint32_t sort_me [size] = 
+  uint32_t sort_me [8] = 
   {
-    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000
+    0x00000004, 0x00000007, 0x00000002, 0x00000001, 0x00000007, 0x000000005, 0x00000003, 0x00000006
   };
-  uint32_t working_space [size] =
+  uint32_t working_space [8] =
   {
-    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
     0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000
   };
   // Loop through all LFSRs and load their initial states
@@ -35,10 +29,15 @@ int main() {
   }
   for (int i = 0; i <= (size-1); i++) {
     uint32_t val = number_gen.get_new_val();
-    sort_me[i] = val;
+    //sort_me[i] = val;
   }
-  merge_sort(sort_me, working_space, size);
-  for (int i = 0; i <= (size-1); i++) {
+
+  for (int i = 0; i <= (8-1); i++) {
+    std::cout << "Pre Sort Value " << i << " is: " << sort_me[i] << std::endl;
+  }
+  // Call merge sort function
+  merge_sort(sort_me, working_space, 8);
+  for (int i = 0; i <= (8-1); i++) {
     std::cout << "Sorted Value " << i << " is: " << sort_me[i] << std::endl;
   }
 }

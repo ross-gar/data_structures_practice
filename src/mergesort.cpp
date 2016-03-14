@@ -24,10 +24,8 @@ void merge_sort(uint32_t *data_array, uint32_t *working_array, uint32_t size) {
     if (size <= 0) { throw std::invalid_argument("merge_sort called with size of 0"); }
     // Only need to do sorting if size is greater than 1
     if (size > 1) {
-        // Size of sub arrays
-        uint32_t size_a, size_b = 0;
-        // Counters used when recombining the sub arrays
-        uint32_t idx_a, idx_b = 0;
+        // Size of sub arrays and counters used when recombining the sub arrays
+        uint32_t size_a = 0, size_b = 0, idx_a = 0, idx_b = 0;
         // Check if size is even
         if (size % 2 == 0) {
             // Since size is even, both sub array sizes will be size/2;
@@ -42,16 +40,17 @@ void merge_sort(uint32_t *data_array, uint32_t *working_array, uint32_t size) {
         // Call merge sort on sub arrays
         merge_sort( data_array       , working_array       , size_a);
         merge_sort( data_array+size_a, working_array+size_a, size_b);
-        
+        //std::cout << "Starting recombination; size_a: " << size_a << " size_b: " << size_b << std::endl;
         // Recombine the sorted sub arrays
         for (int i = 0; i<= (size-1); i++) {
+            //std::cout << "Recombination loop; idx_a: " << idx_a << " idx_b: " << idx_b << std::endl;
             // All elements of sub array A used, fill rest of array with B's elements
-            if (idx_a = size_a-1) {
+            if (idx_a == size_a) {
                 *(working_array + i) = *(data_array + size_a + idx_b);
                 idx_b ++;
             }
             // All elements of sub array B used, fill rest of array with A's elements
-            else if (idx_b = size_b-1) {
+            else if (idx_b == size_b) {
                 *(working_array + i) = *(data_array + idx_a);
                 idx_a ++;
             }
@@ -68,6 +67,7 @@ void merge_sort(uint32_t *data_array, uint32_t *working_array, uint32_t size) {
                     idx_b ++;
                 }
             }
+            //std::cout << "Value: " << *(working_array + i) << std::endl;
         }
         
         // Done recombining sorted sub arrays, now need to move elements out of the working array memory
@@ -75,6 +75,7 @@ void merge_sort(uint32_t *data_array, uint32_t *working_array, uint32_t size) {
         for (int i = 0; i<= (size-1); i++) {
             *(data_array + i) = *(working_array + i);
         }
+        
         return;
     }
     // Reached here if size is 1, no sorting needed.
