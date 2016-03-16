@@ -3,9 +3,8 @@
  flags=-std=c++11
  
  
- g++ $flags -o build/rand_lfsr.o -c test/rand_lfsr.cpp
- g++ $flags -o build/rand_32bit_gen.o -c test/rand_32bit_gen.cpp
+ g++ $flags -o build/test_utils.o -c test/test_utils.cpp
  g++ $flags -o build/main.o -c test/main.cpp
  g++ $flags -o build/mergesort.o -c src/mergesort.cpp
- g++ $flags -o bin/output_program build/main.o build/rand_lfsr.o build/rand_32bit_gen.o build/mergesort.o
+ g++ $flags -o bin/output_program build/main.o build/test_utils.o build/mergesort.o
  
