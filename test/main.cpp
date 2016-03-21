@@ -5,7 +5,7 @@
 #include <cstdint>
 #include "../include/test_utils.h"
 // Include merge sort cpp file here because it's a template function
-#include "../src/mergesort.cpp"
+#include "../src/merge_sort.cpp"
 
 //------------------------------------------------------------------------------
 // Main test function
