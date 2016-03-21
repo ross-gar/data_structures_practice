@@ -5,6 +5,5 @@
  
  g++ $flags -o build/test_utils.o -c test/test_utils.cpp
  g++ $flags -o build/main.o -c test/main.cpp
- g++ $flags -o build/mergesort.o -c src/mergesort.cpp
  g++ $flags -o bin/output_program build/main.o build/test_utils.o build/mergesort.o
  

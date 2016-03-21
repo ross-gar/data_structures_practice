@@ -1,9 +1,15 @@
+//------------------------------------------------------------------------------
+// Includes
+//------------------------------------------------------------------------------
 #include <iostream>
 #include <cstdint>
 #include "../include/test_utils.h"
+// Include merge sort cpp file here because it's a template function
+#include "../src/mergesort.cpp"
 
-void merge_sort(uint32_t *data_array, uint32_t *working_array, uint32_t size);
-
+//------------------------------------------------------------------------------
+// Main test function
+//------------------------------------------------------------------------------
 int main() {
   // Array to be sorted and working space array
   uint32_t sort_me [array_size];
@@ -21,7 +27,7 @@ int main() {
   }
   
   // Main test loop
-  const uint32_t number_iterations = 50;
+  const uint32_t number_iterations = 100;
   for (int i=0 ; i <= (number_iterations-1); i++) {
     std::cout << "Running iteration " << i+1 << " ... ";
       
@@ -31,20 +37,8 @@ int main() {
       sort_me[i] = val;
     }
     
-    /*
-    for (int i = 0; i <= (array_size-1); i++) {
-      std::cout << "Pre Sort Value " << i << " is: " << sort_me[i] << std::endl;
-    }
-    */
-    
     // Call merge sort function
     merge_sort(sort_me, working_space, array_size);
-    
-    /*
-    for (int i = 0; i <= (array_size-1); i++) {
-      std::cout << "Sorted Value " << i << " is: " << sort_me[i] << std::endl;
-    }
-    */
     
     // Check sorted array
     bool result = check_sort(sort_me, array_size);
