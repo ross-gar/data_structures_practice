@@ -6,6 +6,7 @@
 #include "../include/test_utils.h"
 // Include merge sort cpp file here because it's a template function
 #include "../src/merge_sort.cpp"
+#include "../src/bubble_sort.cpp"
 
 //------------------------------------------------------------------------------
 // Main test function
@@ -26,10 +27,10 @@ int main() {
     number_gen.load_state(initial_states[i], i);
   }
   
-  // Main test loop
+  // Main test loops
   const uint32_t number_iterations = 100;
   for (int i=0 ; i <= (number_iterations-1); i++) {
-    std::cout << "Running iteration " << i+1 << " ... ";
+    std::cout << "Running merge sort iteration " << i+1 << " ... ";
       
     // Get new pseudorandom values for sorting array
     for (int i = 0; i <= (array_size-1); i++) {
@@ -39,6 +40,24 @@ int main() {
     
     // Call merge sort function
     merge_sort(sort_me, working_space, array_size);
+
+    // Check sorted array
+    bool result = check_sort(sort_me, array_size);
+    if (result == true) { std::cout << "Test " << i+1 << " passed" << std::endl;}
+    else {std::cout << "Test " << i+1 << " failed" << std::endl;}
+  }
+  
+  for (int i=0 ; i <= (number_iterations-1); i++) {
+    std::cout << "Running bubble sort iteration " << i+1 << " ... ";
+      
+    // Get new pseudorandom values for sorting array
+    for (int i = 0; i <= (array_size-1); i++) {
+      uint32_t val = number_gen.get_new_val();
+      sort_me[i] = val;
+    }
+    
+    // Call bubble sort function
+    bubble_sort(sort_me, array_size);
     
     // Check sorted array
     bool result = check_sort(sort_me, array_size);

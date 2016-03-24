@@ -20,7 +20,6 @@
 */
 template <typename T>
 void merge_sort(T *data_array, T *working_array, uint32_t size) {
-    //std::cout << "Merge sort called with size of: " << size << std::endl;
     // Throw exception if size has an invalid value
     if (size <= 0) { throw std::invalid_argument("merge_sort called with size of 0"); }
     // Only need to do sorting if size is greater than 1
