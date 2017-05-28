@@ -16,6 +16,18 @@ bool check_sort(uint32_t *data_array, uint32_t size) {
 }
 
 //------------------------------------------------------------------------------
+// randomize_data implementation
+//------------------------------------------------------------------------------
+void randomize_data(uint32_t *data_array, rand_32bit_gen *number_gen, uint32_t size) {
+    // Get new pseudorandom values
+    for (int i = 0; i <= (size-1); i++) {
+      // Call member function get_new_val of rand_32bit_gen
+      uint32_t val = number_gen->get_new_val();
+      *(data_array + i) = val;
+    }
+}
+
+//------------------------------------------------------------------------------
 // rand_lfsr implementation
 //------------------------------------------------------------------------------
 rand_lfsr::rand_lfsr() { current_state = 0x0000000; }

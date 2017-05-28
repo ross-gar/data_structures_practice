@@ -3,7 +3,8 @@
 #include <iostream>
 
 /*
-    
+  Simple bubble sort. Loops through array and swaps adjacent elements
+  repeatedly until the array is sorted.
 */
 template <typename T>
 void bubble_sort(T *data_array, uint32_t size) {
@@ -28,7 +29,7 @@ void bubble_sort(T *data_array, uint32_t size) {
                 *(data_array + i) = temp;
             }
         }
-        // If no element was swapped on the last pass through the array, sort is done
+        // If no elements were swapped on the last pass through the array, sort is done
         if (element_swapped == false) {sort_done = true;}
     }
     return;
