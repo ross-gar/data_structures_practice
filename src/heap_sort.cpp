@@ -44,7 +44,12 @@ void heap_sort(T *data_array, uint32_t size) {
   // Throw exception if size has an invalid value
   if (size <= 0) { throw std::invalid_argument("heap_sort called with size of 0"); }
   
-  // Need to call heapify (size-1) times
+  /*
+    Need to call heapify (size-1) times.
+    For this top level heapify call the index given is always 0 to tell heapify to build a full
+    tree. For every iteration the root node is chopped off by moving the array pointer forward 
+    and reducing the size given to the heapify function.
+  */ 
   for (int i=0; i < (size-1); i++) {
     heapify(data_array+i, size-i, 0);
   }
