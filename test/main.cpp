@@ -8,6 +8,7 @@
 #include "../src/merge_sort.cpp"
 #include "../src/bubble_sort.cpp"
 #include "../src/comb_sort.cpp"
+#include "../src/heap_sort.cpp"
 
 //------------------------------------------------------------------------------
 // Main test function
@@ -92,6 +93,26 @@ int main() {
     else if (result == true && verbose_mode == true) {std::cout << "Test " << i+1 << " passed" << std::endl;}
   }
   std::cout << "comb_sort tests complete" << std::endl;
+
+  //---------------------------------------------------------------
+  // Heap Sort Test
+  //---------------------------------------------------------------
+  std::cout << "Running " << number_iterations << " tests of heap_sort" << std::endl;
+  for (int i=0 ; i <= (number_iterations-1); i++) {
+    if (verbose_mode == true) { std::cout << "Running heap_sort iteration " << i+1 << " ... "; }
+
+    // Call function to get new pseudorandom values for sorting array
+    randomize_data(sort_me, &number_gen, array_size);
+
+    // Call heap sort function
+    heap_sort(sort_me, array_size);
+
+    // Check sorted array
+    bool result = check_sort(sort_me, array_size);
+    if (result == false) {std::cout << "Test " << i+1 << " failed" << std::endl;}
+    else if (result == true && verbose_mode == true) {std::cout << "Test " << i+1 << " passed" << std::endl;}
+  }
+  std::cout << "heap_sort tests complete" << std::endl;
 
   return 1;
 }

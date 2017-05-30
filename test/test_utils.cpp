@@ -1,5 +1,6 @@
 #include <cstdint>
 #include <stdexcept>
+#include <iostream>
 #include "../include/test_utils.h"
 
 //------------------------------------------------------------------------------
@@ -11,6 +12,9 @@ bool check_sort(uint32_t *data_array, uint32_t size) {
     for (int i = 1; i <= (size-1); i++) {
         //     element i           the element before i
         if ( *(data_array + i) < *(data_array + i - 1) ) { return false;}
+        if ( *(data_array + i) == *(data_array + i - 1) ) {
+          std::cout << "Warning: Found identical values while checking array sort" << std::endl;
+        }
     }
     return true;
 }
