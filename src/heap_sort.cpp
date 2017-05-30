@@ -25,15 +25,15 @@ void heapify(T *data_array, uint32_t size, uint32_t index) {
   // Check if left child is valid and is larger than parent.
   if (left_child <= (size-1) && *(data_array + left_child) < *(data_array + index)) {
     // Swap left child and parent
-    uint32_t temp              = *(data_array + index);
+    T temp                     = *(data_array + index);
     *(data_array + index)      = *(data_array + left_child);
     *(data_array + left_child) = temp;
   }
   // Check if left child is valid and is larger than parent.
   if (right_child <= (size-1) && *(data_array + right_child) < *(data_array + index)) {
     // Swap right child and parent
-    uint32_t temp              = *(data_array + index);
-    *(data_array + index)      = *(data_array + right_child);
+    T temp                      = *(data_array + index);
+    *(data_array + index)       = *(data_array + right_child);
     *(data_array + right_child) = temp;
   }
   return;
