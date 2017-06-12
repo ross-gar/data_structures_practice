@@ -10,6 +10,7 @@
 #include "../src/bubble_sort.cpp"
 #include "../src/comb_sort.cpp"
 #include "../src/heap_sort.cpp"
+#include "../src/selection_sort.cpp"
 
 //------------------------------------------------------------------------------
 // Main test function
@@ -19,8 +20,8 @@ int main() {
   // Variable and constant declarations
   //---------------------------------------------------------------
   // Define number of algorithmns to be tested and their names
-  const int num_algos = 4;
-  const std::string algo_names[num_algos] = {"merge sort", "bubble sort", "comb sort", "heap_sort"};
+  const int num_algos = 5;
+  const std::string algo_names[num_algos] = {"merge sort", "bubble sort", "comb sort", "heap_sort", "selection_sort"};
 
   // Define number of test iterations
   const uint32_t number_iterations = 1000;
@@ -67,6 +68,7 @@ int main() {
         case 1 : bubble_sort(sort_me, array_size); break;
         case 2 : comb_sort(sort_me, array_size); break;
         case 3 : heap_sort(sort_me, array_size); break;
+        case 4 : selection_sort(sort_me, array_size); break;
         default : std::cout << "Warning: no matching sort found in iteration " << iter << std::endl;
       }
 
