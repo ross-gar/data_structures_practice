@@ -8,7 +8,7 @@
 template <typename T>
 void selection_sort(T *data_array, uint32_t size) {
     // Throw exception if size has an invalid value
-    if (size <= 0) { throw std::invalid_argument("merge_sort called with size of 0"); }
+    if (size <= 0) { throw std::invalid_argument("selection_sort called with size of 0"); }
 
     // Smallest number and its index
     T smallest_num;
