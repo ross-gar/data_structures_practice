@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <string>
 #include "../include/test_utils.h"
+#include "../include/link_list_node.h"
 // Include sort sources files here because they are template functions
 #include "../src/merge_sort.cpp"
 #include "../src/bubble_sort.cpp"
@@ -34,7 +35,7 @@ int main() {
     std::cout << "--------------------------------------------------------------" << std::endl;
     std::cout << "Using array size of " << array_sizes[x] << std::endl;
     std::cout << "--------------------------------------------------------------" << std::endl;
-    
+
     // Create array to be sorted and working space array
     uint32_t * sort_me;
     sort_me = new uint32_t [array_sizes[x]];
@@ -79,5 +80,32 @@ int main() {
     delete[] working_space;
 
   } // number of array sizes loop
+
+
+  //---------------------------------------------------------------
+  // Link List Node Tests
+  //---------------------------------------------------------------
+  std::cout << std::endl;
+  std::cout << "--------------------------------------------------------------" << std::endl;
+  std::cout << "Running Linked List Tests" << std::endl;
+  std::cout << "--------------------------------------------------------------" << std::endl;
+  link_list_node * node_1 = new link_list_node();
+  link_list_node * node_2 = new link_list_node();
+
+  // Node setup
+  node_1->set_data(0x12345678);
+  node_1->set_next_node(node_2);
+  node_2->set_data(0xABCDEF01);
+  node_2->set_previous_node(node_1);
+
+  // Check link list node data contents
+  if (node_1->get_data() != 0x12345678) { std::cout << "Link list check 1 failed" << std::endl; }
+  if (node_2->get_data() != 0xABCDEF01) { std::cout << "Link list check 2 failed" << std::endl; }
+  // Check link list node pointer addresses
+  if (node_1->get_next_node() != node_2) { std::cout << "Link list check 3 failed" << std::endl; }
+  if (node_2->get_previous_node() != node_1) { std::cout << "Link list check 4 failed" << std::endl; }
+
+  delete node_1, node_2;
+
   return 1;
 }
